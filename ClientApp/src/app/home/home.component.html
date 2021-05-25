@@ -1,0 +1,7 @@
+<app-search-question (search)="loadQuestions($event)"></app-search-question>
+<div class="question-list">
+  <app-question-answer
+    [questionsList]="questions"
+    [loading]="loading"
+  ></app-question-answer>
+</div>

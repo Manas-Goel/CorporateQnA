@@ -1,0 +1,6 @@
+ClientApp/node_modules
+CorporateQnA/bin
+DataModels/bin
+Services/bin
+Models/bin
+Data/bin

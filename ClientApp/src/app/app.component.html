@@ -1,0 +1,14 @@
+<app-header></app-header>
+<app-side-nav></app-side-nav>
+<div class="main-content d-flex">
+  <div class="main">
+    <app-main-nav *ngIf="isAuthenticated"></app-main-nav>
+    <router-outlet class="content"></router-outlet>
+    <!-- <app-main-nav></app-main-nav>
+    <app-search-question></app-search-question>
+    <div class="d-flex questions-answers">
+      <app-questions></app-questions>
+      <app-answers class="flex-fill"></app-answers>
+    </div> -->
+  </div>
+</div>

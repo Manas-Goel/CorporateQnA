@@ -1,0 +1,12 @@
+C:\Users\manas\source\repos\CorporateQA\DataModels\bin\Debug\net5.0\DataModels.deps.json
+C:\Users\manas\source\repos\CorporateQA\DataModels\bin\Debug\net5.0\DataModels.dll
+C:\Users\manas\source\repos\CorporateQA\DataModels\bin\Debug\net5.0\ref\DataModels.dll
+C:\Users\manas\source\repos\CorporateQA\DataModels\bin\Debug\net5.0\DataModels.pdb
+C:\Users\manas\source\repos\CorporateQA\DataModels\obj\Debug\net5.0\DataModels.csprojAssemblyReference.cache
+C:\Users\manas\source\repos\CorporateQA\DataModels\obj\Debug\net5.0\DataModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\manas\source\repos\CorporateQA\DataModels\obj\Debug\net5.0\DataModels.AssemblyInfoInputs.cache
+C:\Users\manas\source\repos\CorporateQA\DataModels\obj\Debug\net5.0\DataModels.AssemblyInfo.cs
+C:\Users\manas\source\repos\CorporateQA\DataModels\obj\Debug\net5.0\DataModels.csproj.CoreCompileInputs.cache
+C:\Users\manas\source\repos\CorporateQA\DataModels\obj\Debug\net5.0\DataModels.dll
+C:\Users\manas\source\repos\CorporateQA\DataModels\obj\Debug\net5.0\ref\DataModels.dll
+C:\Users\manas\source\repos\CorporateQA\DataModels\obj\Debug\net5.0\DataModels.pdb

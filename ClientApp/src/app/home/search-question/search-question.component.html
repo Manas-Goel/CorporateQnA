@@ -1,0 +1,84 @@
+<div class="search-question d-flex justify-content-between">
+  <div class="d-flex align-items-center">
+    <form
+      class="keywords"
+      [formGroup]="searchQuestionForm"
+      (ngSubmit)="searchQuestion()"
+    >
+      <p class="m-0">Keywords</p>
+      <div class="position-relative">
+        <fa-icon [icon]="faSearch" class="position-absolute icon"></fa-icon>
+        <input
+          type="text"
+          id="keyword"
+          placeholder="Search"
+          class="mt-1"
+          formControlName="keyword"
+          (keyup)="searchQuestion()"
+        />
+      </div>
+    </form>
+    <div class="categories ml-3">
+      <p class="m-0">Category</p>
+      <div class="mt-1" ngbDropdown>
+        <div class="btn" id="dropdownBasic1" ngbDropdownToggle>
+          <span class="btn-text">
+            {{ searchQuestionForm.value.categoryName }}</span
+          >
+        </div>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <div
+            ngbDropdownItem
+            *ngFor="let category of categories"
+            (click)="changeCategory(category)"
+          >
+            {{ category.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="categories ml-3">
+      <p class="m-0">Show</p>
+      <div class="mt-1" ngbDropdown>
+        <div class="btn" id="dropdownBasic1" ngbDropdownToggle>
+          <span class="btn-text">
+            {{ searchQuestionForm.value.searchCriteriaName }}</span
+          >
+        </div>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <div
+            ngbDropdownItem
+            *ngFor="let show of shows"
+            (click)="changeShow(show)"
+          >
+            {{ show.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="categories ml-3">
+      <p class="m-0">Sort By</p>
+      <div class="mt-1" ngbDropdown>
+        <div class="btn" id="dropdownBasic1" ngbDropdownToggle>
+          <span class="btn-text">
+            {{ searchQuestionForm.value.searchTimeName }}</span
+          >
+        </div>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <div
+            ngbDropdownItem
+            *ngFor="let sort of sortBy"
+            (click)="changeSortBy(sort)"
+          >
+            {{ sort.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="ml-3" id="reset" (click)="resetFields()">
+      <fa-icon [icon]="faRedo"></fa-icon>
+      Reset
+    </a>
+  </div>
+  <app-add-question (questionAdded)="searchQuestion()"></app-add-question>
+</div>

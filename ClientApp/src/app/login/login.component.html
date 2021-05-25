@@ -1,0 +1,40 @@
+<div class="pt-5">
+  <h1 class="text-center">Login</h1>
+  <form class="row pt-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="col-4 offset-4">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" formControlName="Email" />
+        <span
+          *ngIf="!formControls.Email.valid && formControls.Email.touched"
+          class="text-danger"
+          >Email is invalid</span
+        >
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="Password"
+        />
+        <span
+          *ngIf="!formControls.Password.valid && formControls.Password.touched"
+          class="text-danger"
+          >Password is required</span
+        >
+      </div>
+      <p class="text-danger py-3" *ngIf="error">Incorrect Email/Password</p>
+      <button
+        type="submit"
+        [disabled]="!loginForm.valid || loading"
+        class="btn btn-primary"
+      >
+        {{ loading ? "Logging In..." : "Login" }}
+      </button>
+      <button type="button" class="ml-3 btn btn-secondary" routerLink="/signup">
+        SignUp
+      </button>
+    </div>
+  </form>
+</div>

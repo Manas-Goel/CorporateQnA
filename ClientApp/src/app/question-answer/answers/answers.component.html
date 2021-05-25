@@ -1,0 +1,156 @@
+<div class="answerList">
+  <div
+    *ngIf="selectedQuestion == null; else showAnswers"
+    class="click-question"
+  >
+    <fa-icon [icon]="faArrowLeft" class="icon"></fa-icon>
+    <p>
+      Click on a Question to see <span><br /></span> all the details
+    </p>
+  </div>
+  <ng-template #showAnswers>
+    <div class="question-answer">
+      <div class="question">
+        <div
+          class="user-info d-flex align-items-center justify-content-between"
+        >
+          <div class="d-flex align-items-center">
+            <img
+              src="{{ selectedQuestion.profileImageUrl }}"
+              class="rounded-circle"
+            />
+            <p class="user-name m-0 ml-2">{{ selectedQuestion.name }}</p>
+            <p class="post-time m-0 ml-3">
+              {{ selectedQuestion.createdOn | amTimeAgo }}
+            </p>
+          </div>
+          <div class="report d-flex align-items-center">
+            <fa-icon [icon]="faExclamationCircle" class="text-danger"></fa-icon>
+            <p class="m-0 ml-1 report-text">Report this</p>
+          </div>
+        </div>
+        <p class="m-0 my-2 ques">{{ selectedQuestion.title }}</p>
+        <p
+          class="m-0 ques-detail"
+          [innerHtml]="selectedQuestion.description"
+        ></p>
+      </div>
+      <p class="m-0 answer-heading">
+        Answers ({{ selectedQuestion.totalAnswers }})
+      </p>
+      <div class="answers">
+        <h5
+          class="text-danger p-4"
+          *ngIf="answers.length == 0; else showAnswers"
+        >
+          No Answers
+        </h5>
+        <ng-template #showAnswers>
+          <app-answer
+            *ngFor="let answer of answers"
+            [answer]="answer"
+            [questionUserId]="selectedQuestion.userId"
+            [question]="selectedQuestion"
+          ></app-answer>
+        </ng-template>
+        <form
+          class="add-answer"
+          [formGroup]="addAnswerForm"
+          (ngSubmit)="addAnswer()"
+          *ngIf="!expandAnswer"
+          [ngStyle]="{
+            display: selectedQuestion.isResolved ? 'none' : 'block'
+          }"
+        >
+          <div class="NgxEditor__Wrapper">
+            <div class="d-flex text-content">
+              <ngx-editor
+                [editor]="editor"
+                placeholder="Enter your answer here..."
+                outputFormat="html"
+                formControlName="description"
+                class="flex-fill"
+                style="width: 150px"
+              >
+              </ngx-editor>
+              <fa-icon
+                [icon]="faExpandAlt"
+                class="p-2 icon"
+                (click)="expandAnswerForm(true)"
+              ></fa-icon>
+            </div>
+            <div class="d-flex justify-content-between">
+              <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+              </ngx-editor-menu>
+              <fa-icon
+                [icon]="faPaperPlane"
+                class="px-2 pt-2 icon"
+                (click)="addAnswer()"
+              ></fa-icon>
+            </div>
+          </div>
+          <span
+            class="text-danger"
+            *ngIf="
+              !formControls.description.valid &&
+              formControls.description.touched &&
+              !addAnswerForm.valid
+            "
+            >Answer is required!</span
+          >
+        </form>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<div
+  class="backdrop"
+  *ngIf="expandAnswer"
+  (click)="expandAnswerForm(false)"
+></div>
+<div class="expand-answer-form" *ngIf="expandAnswer">
+  <form class="add-answer" [formGroup]="addAnswerForm">
+    <div class="NgxEditor__Wrapper">
+      <div
+        style="background-color: #3e4249"
+        class="p-2 d-flex justify-content-between"
+      >
+        <p class="m-0"></p>
+        <fa-icon
+          [icon]="faCompressAlt"
+          class="p-2 icon"
+          (click)="expandAnswerForm(false)"
+        ></fa-icon>
+      </div>
+      <ngx-editor
+        [editor]="editor2"
+        enable="expandAnswer"
+        placeholder="Enter your answer here..."
+        outputFormat="html"
+        formControlName="description"
+        class="flex-fill"
+        style="width: 150px"
+      >
+      </ngx-editor>
+      <div class="d-flex justify-content-between">
+        <ngx-editor-menu [editor]="editor2" [toolbar]="toolbar">
+        </ngx-editor-menu>
+        <fa-icon
+          [icon]="faPaperPlane"
+          class="px-2 pt-2 icon"
+          (click)="addAnswer()"
+        ></fa-icon>
+      </div>
+    </div>
+    <span
+      class="text-danger"
+      *ngIf="
+        !formControls.description.valid &&
+        formControls.description.touched &&
+        !addAnswerForm.valid
+      "
+      >Answer is required!</span
+    >
+  </form>
+</div>

@@ -1,0 +1,20 @@
+.modal-header {
+  background-color: rgb(81, 89, 104);
+}
+
+.cancelBtn {
+  background-color: rgb(164, 170, 178);
+  &:hover {
+    background-color: darken($color: #a4aab2, $amount: 20);
+  }
+}
+.postBtn {
+  background-color: #76618b;
+  &:hover {
+    background-color: darken($color: #76618b, $amount: 20);
+  }
+}
+
+.add-category {
+  background-color: rgb(118, 97, 139);
+}

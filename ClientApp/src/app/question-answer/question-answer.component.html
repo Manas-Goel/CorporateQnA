@@ -1,0 +1,12 @@
+<div class="question-answer d-flex">
+  <app-questions
+    (selectedQuestion)="changeSelectedQuestion($event)"
+    [questions]="questionsList"
+    [loading]="loading"
+  ></app-questions>
+  <app-answers
+    [selectedQuestion]="selectedQuestion"
+    *ngIf="questionsList.length != 0"
+    class="flex-fill"
+  ></app-answers>
+</div>

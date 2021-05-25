@@ -1,0 +1,15 @@
+<div class="questions">
+  <p class="text-info p-3" *ngIf="loading; else notLoading">Loading...</p>
+  <ng-template #notLoading>
+    <h5 class="text-danger p-3" *ngIf="questions.length == 0; else showContent">
+      No question to show!
+    </h5>
+    <ng-template #showContent>
+      <app-question
+        *ngFor="let question of questions"
+        [question]="question"
+        (changeQuestion)="changeSelectedQuestion($event)"
+      ></app-question>
+    </ng-template>
+  </ng-template>
+</div>

@@ -1,0 +1,64 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title text-light" id="modal-basic-title">Add Category</h4>
+    <button
+      type="button"
+      class="close text-light"
+      aria-label="Close"
+      (click)="modal.close()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addCategoryForm" (ngSubmit)="(onSubmit)">
+      <div class="mb-4">
+        <label class="form-label">Category Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="Name"
+          placeholder="Enter category name"
+        />
+        <span
+          *ngIf="!formControls.Name.valid && formControls.Name.touched"
+          class="text-danger"
+          >Category Name is required</span
+        >
+      </div>
+      <div class="mb-4">
+        <label class="form-label">Description</label>
+        <textarea
+          rows="6"
+          placeholder="Enter your text here"
+          class="form-control"
+          formControlName="Description"
+        ></textarea>
+        <span
+          *ngIf="
+            !formControls.Description.valid && formControls.Description.touched
+          "
+          class="text-danger"
+          >Description is required</span
+        >
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn cancelBtn text-light" (click)="modal.close()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="btn postBtn text-light"
+      [disabled]="!addCategoryForm.valid || loading"
+      (click)="onSubmit()"
+    >
+      {{ loading ? "Saving" : "Save" }}
+    </button>
+  </div>
+</ng-template>
+
+<button class="btn text-light mt-3 add-category" (click)="open(content)">
+  + Category
+</button>

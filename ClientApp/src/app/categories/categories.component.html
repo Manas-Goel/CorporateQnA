@@ -1,0 +1,67 @@
+<div class="search-category d-flex align-items-center justify-content-between">
+  <form
+    class="d-flex align-items-center"
+    [formGroup]="searchCategoryForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div class="keywords">
+      <p class="m-0">Categories</p>
+      <div class="position-relative">
+        <fa-icon [icon]="faSearch" class="position-absolute icon"></fa-icon>
+        <input
+          type="text"
+          id="keyword"
+          placeholder="Search"
+          class="mt-1"
+          formControlName="keyword"
+          (keyup)="onSubmit()"
+        />
+      </div>
+    </div>
+    <div class="categories ml-3">
+      <p class="m-0">Show</p>
+      <div class="mt-1" ngbDropdown>
+        <div class="btn" id="dropdownBasic1" ngbDropdownToggle>
+          <span class="btn-text">{{ searchCategoryForm.value.sortBy }}</span>
+        </div>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <div
+            ngbDropdownItem
+            *ngFor="let sortOption of sortOptions"
+            (click)="changeSortOption(sortOption)"
+          >
+            {{ sortOption.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="ml-3" id="reset" (click)="resetFields()">
+      <fa-icon [icon]="faRedo"></fa-icon>
+      Reset
+    </a>
+  </form>
+  <app-add-category (categoryAdded)="updateCategories()"></app-add-category>
+</div>
+<div class="categories">
+  <p class="text-info" *ngIf="loading; else notLoading">Loading...</p>
+  <ng-template #notLoading>
+    <h4 class="text-danger" *ngIf="categories.length == 0; else showCategories">
+      No categories to show!
+    </h4>
+    <ng-template #showCategories>
+      <div class="row">
+        <div class="col-3" *ngFor="let category of categories">
+          <div class="category">
+            <div class="d-flex justify-content-between">
+              <h5>{{ category.name }}</h5>
+              <p class="questions">({{ category.questionsTagged }})</p>
+            </div>
+            <p class="category-description">
+              {{ category.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

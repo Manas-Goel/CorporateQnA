@@ -1,0 +1,85 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title text-light" id="modal-basic-title">Add Question</h4>
+    <button
+      type="button"
+      class="close text-light"
+      aria-label="Close"
+      (click)="modal.close()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addQuestionForm" (ngSubmit)="(onSubmit)">
+      <div class="mb-4">
+        <label class="form-label">Question</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="Title"
+          placeholder="Enter your question"
+        />
+        <span
+          *ngIf="!formControls.Title.valid && formControls.Title.touched"
+          class="text-danger"
+          >Question title is required</span
+        >
+      </div>
+      <div class="mb-4">
+        <label class="form-label">Description</label>
+        <div class="NgxEditor__Wrapper">
+          <ngx-editor
+            [editor]="editor"
+            placeholder="Enter your text here"
+            formControlName="Description"
+            outputFormat="html"
+          >
+          </ngx-editor>
+          <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+          </ngx-editor-menu>
+        </div>
+        <span
+          *ngIf="
+            !formControls.Description.valid && formControls.Description.touched
+          "
+          class="text-danger"
+          >Description is required</span
+        >
+      </div>
+      <div class="mb-4">
+        <label class="form-label">Category</label>
+        <select class="form-control" formControlName="CategoryId">
+          <option value="" disabled selected>Select</option>
+          <option *ngFor="let category of categories" [ngValue]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+        <span
+          *ngIf="
+            !formControls.CategoryId.valid && formControls.CategoryId.touched
+          "
+          class="text-danger"
+          >Category is required</span
+        >
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn cancelBtn text-light" (click)="modal.close()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="btn postBtn text-light"
+      [disabled]="!addQuestionForm.valid || loading"
+      (click)="onSubmit()"
+    >
+      {{ loading ? "Posting" : "Post" }}
+    </button>
+  </div>
+</ng-template>
+
+<button class="btn text-light mt-4 add-question" (click)="open(content)">
+  + Question
+</button>

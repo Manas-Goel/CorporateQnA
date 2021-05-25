@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-between header align-items-center">
+  <div class="logo">
+    <img src="../../assets/images/logo.svg" alt="Logo" />
+  </div>
+  <div>
+    <div
+      *ngIf="!isAuthenticated && userInfo == null; else userProfile"
+      class="d-flex align-items-center"
+    >
+      <div class="btn" routerLink="/signup" routerLinkActive="active">
+        SignUp
+      </div>
+      <div class="btn" routerLink="/login" routerLinkActive="active">Login</div>
+    </div>
+    <ng-template #userProfile>
+      <div class="d-flex text-white align-items-center info">
+        <p class="m-0 m-2">
+          {{ date | amParse: "DD/MM/YYYY" | amDateFormat: "LL" }}
+        </p>
+        <fa-icon [icon]="faSun" class="m-2"></fa-icon>
+        <p class="m-2">{{ userInfo.name }}</p>
+        <img
+          s
+          src="{{ userInfo.profileImageUrl }}"
+          class="rounded-circle m-2"
+        />
+        <div class="btn btn-danger btn-sm m-0" (click)="logout()">Logout</div>
+      </div>
+    </ng-template>
+  </div>
+</div>

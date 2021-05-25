@@ -1,0 +1,67 @@
+.user-details {
+  height: 100%;
+  background-color: rgb(248, 248, 249);
+  padding: 20px;
+
+  .back {
+    color: rgb(118, 97, 139);
+    p {
+      cursor: pointer;
+      &:hover {
+        color: darken($color: rgb(118, 97, 139), $amount: 20);
+      }
+    }
+    .icon {
+      font-size: 18px;
+    }
+  }
+  .user-profile {
+    padding: 20px;
+    border: 1px solid rgb(212, 215, 220);
+    background-color: white;
+    img {
+      width: 56px;
+      height: 56px;
+    }
+    .user-info {
+      margin-right: 40px;
+      .like fa-icon {
+        color: lighten($color: green, $amount: 10);
+        cursor: pointer;
+        &.like-active {
+          color: darken($color: green, $amount: 10);
+        }
+      }
+      .dislike fa-icon {
+        color: lighten($color: red, $amount: 10);
+        cursor: pointer;
+        &.dislike-active {
+          color: darken($color: red, $amount: 10);
+        }
+      }
+    }
+    .user-stats {
+      background-color: rgb(248, 248, 249);
+      margin-left: 20px;
+      width: 130px;
+      p {
+        color: rgb(117, 117, 117);
+        font-size: 12px;
+      }
+    }
+  }
+  .nav {
+    border: 1px solid rgb(212, 215, 220);
+    background-color: white;
+    border-top: none;
+    .nav-link {
+      padding: 15px 25px;
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+      &.active {
+        border-bottom: 3px solid #76618b;
+      }
+    }
+  }
+}

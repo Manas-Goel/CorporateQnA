@@ -1,0 +1,5 @@
+﻿CREATE TABLE QuestionViews(
+	Id INT IDENTITY(1,1) PRIMARY KEY,
+	QuestionId INT,
+	UserId NVARCHAR(255),
+)

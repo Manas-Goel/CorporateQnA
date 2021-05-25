@@ -1,0 +1,34 @@
+<div
+  class="question d-flex position-relative"
+  (click)="changeSelectedQuestion()"
+>
+  <div class="triangle" *ngIf="question.isResolved"></div>
+  <div class="profile d-flex flex-column align-items-center">
+    <img src="{{ question.profileImageUrl }}" class="rounded-circle mb-2" />
+    <a (click)="changeUpvoteStatus()">
+      <fa-icon
+        [icon]="faChevronUp"
+        class="upvote"
+        [ngClass]="{ active: isUpvoted }"
+      ></fa-icon>
+    </a>
+    <p class="m-0">{{ question.upVotes }}</p>
+  </div>
+  <div class="user-question ml-4">
+    <p class="ques">{{ question.title }}</p>
+    <div class="ques-detail" [innerHtml]="question.description"></div>
+    <div class="views d-flex justify-content-between align-items-center mt-4">
+      <div class="d-flex align-items-center">
+        <fa-icon [icon]="faEye" class="mr-1 view-icon"></fa-icon>
+        <p class="view-count">{{ question.views }}</p>
+        <p class="answer-number ml-4">{{ question.totalAnswers }} Answers</p>
+      </div>
+      <p class="m-0 post-time" *ngIf="!question.isResolved">
+        {{ question.createdOn | amTimeAgo }}
+      </p>
+      <p class="m-0 post-time text-success" *ngIf="question.isResolved">
+        Resolved
+      </p>
+    </div>
+  </div>
+</div>

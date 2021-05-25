@@ -1,0 +1,34 @@
+.answer {
+  padding: 20px 10px;
+  .user-info {
+    font-size: 14px;
+    img {
+      width: 28px;
+      height: 28px;
+    }
+    .post-time {
+      color: rgb(119, 119, 119);
+      font-size: 12px;
+    }
+    .like fa-icon {
+      cursor: pointer;
+      &.like-active {
+        color: darken($color: green, $amount: 10);
+      }
+    }
+    .dislike fa-icon {
+      cursor: pointer;
+      &.dislike-active {
+        color: darken($color: red, $amount: 10);
+      }
+    }
+    .like-dislike {
+      color: grey;
+    }
+  }
+  .ans,
+  .best-answer {
+    font-size: 13px;
+    margin-left: 36px;
+  }
+}

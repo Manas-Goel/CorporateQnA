@@ -1,0 +1,38 @@
+<div class="answer">
+  <div class="user-info d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <img src="{{ answer.profileImageUrl }}" class="rounded-circle" />
+      <p class="user-name m-0 ml-2">{{ answer.name }}</p>
+      <p class="post-time m-0 ml-3">
+        {{ answer.createdOn | amTimeAgo }}
+      </p>
+    </div>
+    <div class="like-dislike d-flex">
+      <div class="like d-flex align-items-center">
+        <fa-icon
+          [icon]="faThumbsUp"
+          [ngClass]="{ 'like-active': liked }"
+          (click)="rateAnswer(true, false)"
+        ></fa-icon>
+        <p class="m-0 ml-1">{{ answer.likes }}</p>
+      </div>
+      <div class="dislike d-flex ml-3">
+        <fa-icon
+          [icon]="faThumbsDown"
+          [ngClass]="{ 'dislike-active': disliked }"
+          (click)="rateAnswer(false, true)"
+        ></fa-icon>
+        <p class="m-0 ml-1">{{ answer.dislikes }}</p>
+      </div>
+    </div>
+  </div>
+  <p class="ans mt-2" [innerHtml]="answer.description"></p>
+  <div class="best-answer d-flex align-items-center" *ngIf="canMarkBestAnswer">
+    <input
+      type="checkbox"
+      (change)="markBestAnswer($event)"
+      [checked]="isBestAnswer"
+    />
+    <p class="m-0 ml-2">Mark as best solution</p>
+  </div>
+</div>

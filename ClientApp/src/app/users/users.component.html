@@ -1,0 +1,70 @@
+<div class="search-user">
+  <div class="keywords">
+    <p class="m-0">Users</p>
+    <div class="position-relative">
+      <fa-icon [icon]="faSearch" class="position-absolute icon"></fa-icon>
+      <input
+        type="text"
+        id="keyword"
+        placeholder="Search"
+        class="mt-1"
+        (keyup)="onSubmit($event)"
+      />
+    </div>
+  </div>
+</div>
+<div class="users">
+  <p class="text-info" *ngIf="loading; else notLoading">Loading...</p>
+  <ng-template #notLoading>
+    <h4 class="text-danger" *ngIf="users.length == 0; else showUsers">
+      No users to show!
+    </h4>
+    <ng-template #showUsers>
+      <div class="row">
+        <div
+          class="col-3"
+          *ngFor="let user of users"
+          (click)="loadUserDetails(user.id)"
+        >
+          <div class="user">
+            <div class="d-flex profile">
+              <img src="{{ user.profileImageUrl }}" class="rounded-circle" />
+              <div class="user-info ml-3">
+                <h6 class="m-0 mb-1">{{ user.name }}</h6>
+                <p class="m-0">{{ user.jobProfile }}</p>
+                <p class="m-0">{{ user.department }}, {{ user.location }}</p>
+                <div class="like-dislike d-flex mt-2">
+                  <div class="like d-flex align-items-center">
+                    <fa-icon [icon]="faThumbsUp" class="text-success"></fa-icon>
+                    <p class="m-0 ml-1">{{ user.likes }}</p>
+                  </div>
+                  <div class="dislike d-flex ml-3">
+                    <fa-icon
+                      [icon]="faThumbsDown"
+                      class="text-danger"
+                    ></fa-icon>
+                    <p class="m-0 ml-1">{{ user.dislikes }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="user-stats d-flex">
+              <div class="flex-fill border-right p-2 text-center">
+                <h6 class="m-0">{{ user.questionsAsked }}</h6>
+                <p class="m-0">Questions Asked</p>
+              </div>
+              <div class="flex-fill border-right p-2 text-center">
+                <h6 class="m-0">{{ user.questionsAnswered }}</h6>
+                <p class="m-0">Questions Answered</p>
+              </div>
+              <div class="flex-fill p-2 text-center">
+                <h6 class="m-0">{{ user.questionsSolved }}</h6>
+                <p class="m-0">Questions Solved</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
