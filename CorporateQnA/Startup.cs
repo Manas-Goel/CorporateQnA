@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -7,6 +8,7 @@ using Services;
 using Services.Authentication;
 using Services.Helpers;
 using Services.Integrate;
+using Services.Profiles;
 
 namespace CorporateQnA
 {
@@ -15,7 +17,10 @@ namespace CorporateQnA
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            SqlHelper.Config = configuration;
+            Database.Config = configuration;
+            AutoMapperExtension.Mapper = (new MapperConfiguration(
+                cfg => cfg.AddProfile<CorporateQnAProfile>()))
+                .CreateMapper();
         }
 
         public IConfiguration Configuration { get; }

@@ -7,10 +7,16 @@ namespace Services
 {
     public class CategoryService:ICategoryService
     {
+        private readonly Database Database;
+
+        public CategoryService()
+        {
+            Database = new Database("CorporateQnADatabase", "SqlServer");
+        }
 
         public void AddCategory(Category categoryParam)
         {
-            SqlHelper.Execute(
+            Database.Execute(
                 "INSERT INTO Categories(Name, Description, QuestionsTagged)" +
                 "VALUES(@0,@1,0)",
                 categoryParam.Name,categoryParam.Description);
@@ -19,7 +25,7 @@ namespace Services
 
         public IEnumerable<Category> GetAllCategories()
         {
-            return SqlHelper.Query<Db.Category>("SELECT * FROM Categories ORDER BY QuestionsTagged DESC")
+            return Database.Query<Db.Category>("SELECT * FROM Categories ORDER BY QuestionsTagged DESC")
                 .MapTo<IEnumerable<Category>>();
         }
 
@@ -31,7 +37,7 @@ namespace Services
                 orderBy = "QuestionsTagged DESC";
             }
 
-            return SqlHelper.Query<Db.Category>($"SELECT * FROM Categories WHERE Name LIKE '%{keyword}%' ORDER BY {orderBy}")
+            return Database.Query<Db.Category>($"SELECT * FROM Categories WHERE Name LIKE '%{keyword}%' ORDER BY {orderBy}")
                 .MapTo<IEnumerable<Category>>();
         }
     }
