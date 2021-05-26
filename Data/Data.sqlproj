@@ -56,7 +56,6 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="Views" />
-    <Folder Include="Stored Procedures" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tables\AnswerRatings.sql" />
@@ -67,20 +66,7 @@
     <None Include="Tables\QuestionViews.sql" />
     <None Include="Tables\UserDetails.sql" />
     <None Include="Tables\UserRatings.sql" />
-    <None Include="Views\vWQuestionsByUserId.sql" />
-    <None Include="Stored Procedures\spAddAnswer.sql" />
-    <None Include="Stored Procedures\spGetAllAnswersByQuestionId.sql" />
-    <None Include="Stored Procedures\spMarkBestAnswer.sql" />
-    <None Include="Stored Procedures\spRateNewAnswer.sql" />
-    <None Include="Stored Procedures\spRateNewUser.sql" />
-    <None Include="Stored Procedures\spRateOldAnswer.sql" />
-    <None Include="Stored Procedures\spRateOldUser.sql" />
-    <None Include="Stored Procedures\spUpvoteNewQuestion.sql" />
-    <None Include="Stored Procedures\spUpvoteOldQuestion.sql" />
-    <None Include="Stored Procedures\spAddQuestion.sql" />
-    <None Include="Stored Procedures\spInsertAndUpdateTotalAnswers.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <Build Include="Stored Procedures\spIncreaseQuestionViews.sql" />
+    <None Include="Views\viewUserQuestions.sql" />
+    <None Include="Views\viewQuestionAnswers.cs.sql" />
   </ItemGroup>
 </Project>

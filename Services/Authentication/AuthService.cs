@@ -7,10 +7,16 @@ namespace Services.Authentication
 {
     public class AuthService:IAuthService
     {
+        private readonly Database Database;
+
+        public AuthService() 
+        {
+            Database = new Database("CorporateQnADatabase", "SqlServer"); 
+        }
 
         public Tuple<bool,User> Signup(User userData)
         {
-            var user = SqlHelper.SingleOrDefault<Db.User>("SELECT * FROM UserDetails WHERE Email=@0", userData.Email);
+            var user = Database.SingleOrDefault<Db.User>("SELECT * FROM UserDetails WHERE Email=@0", userData.Email);
             if (user != null)
             {
                 return new Tuple<bool, User>(false,userData);
@@ -20,7 +26,7 @@ namespace Services.Authentication
             user.Password = BCrypt.Net.BCrypt.HashPassword(userData.Password);
             user.Id = Guid.NewGuid().ToString();
 
-            SqlHelper.Execute("INSERT INTO UserDetails (Id,Email,Password,Name,JobProfile,Department,Location,ProfileImageUrl) " +
+            Database.Execute("INSERT INTO UserDetails (Id,Email,Password,Name,JobProfile,Department,Location,ProfileImageUrl) " +
                 "VALUES(@0,@1,@2,@3,@4,@5,@6,@7)",user.Id,user.Email,user.Password,user.Name,user.JobProfile,
                 user.Department,user.Location,user.ProfileImageUrl);
 
@@ -29,7 +35,7 @@ namespace Services.Authentication
 
         public User Login(string email, string password)
         {
-            var user = SqlHelper.SingleOrDefault<Db.User>(
+            var user = Database.SingleOrDefault<Db.User>(
                 "SELECT * FROM UserDetails WHERE Email=@0",email);
 
             if (user != null)
