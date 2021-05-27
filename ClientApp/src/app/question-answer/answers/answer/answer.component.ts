@@ -9,7 +9,6 @@ import { faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-answer',
   templateUrl: './answer.component.html',
-  styleUrls: ['./answer.component.scss'],
 })
 export class AnswerComponent implements OnInit {
   @Input() answer: QuestionAnswers;

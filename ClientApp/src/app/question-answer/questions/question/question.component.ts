@@ -7,7 +7,6 @@ import { faChevronUp, faEye } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
-  styleUrls: ['./question.component.scss'],
 })
 export class QuestionComponent implements OnInit {
   faChevronUp = faChevronUp;

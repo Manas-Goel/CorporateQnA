@@ -17,7 +17,6 @@ import { Editor, Toolbar } from 'ngx-editor';
 @Component({
   selector: 'app-answers',
   templateUrl: './answers.component.html',
-  styleUrls: ['./answers.component.scss'],
 })
 export class AnswersComponent implements OnInit, OnDestroy {
   faExclamationCircle = faExclamationCircle;

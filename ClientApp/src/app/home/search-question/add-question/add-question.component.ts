@@ -11,7 +11,6 @@ import { Editor, Toolbar, toHTML } from 'ngx-editor';
 @Component({
   selector: 'app-add-question',
   templateUrl: './add-question.component.html',
-  styleUrls: ['./add-question.component.scss'],
 })
 export class AddQuestionComponent implements OnInit {
   @Output() questionAdded = new EventEmitter();
