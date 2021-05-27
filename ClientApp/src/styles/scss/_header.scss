@@ -1,0 +1,38 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: 52px;
+  background-color: $purple;
+  .logo {
+    background-color: $darkPurple;
+    width: 100px;
+    padding: 13px 17px;
+    img {
+      width: 66px;
+    }
+  }
+
+  .btn {
+    margin-right: 8px;
+    color: black;
+    outline: none;
+    &:hover {
+      color: white;
+    }
+    &.active {
+      color: white;
+    }
+  }
+
+  .info {
+    margin-right: 20px;
+    font-weight: 100;
+    img {
+      width: 36px;
+      height: 36px;
+    }
+  }
+}
