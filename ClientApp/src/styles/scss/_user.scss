@@ -1,0 +1,134 @@
+.search-user {
+  height: 92px;
+  border-bottom: 1px solid rgb(212, 215, 220);
+  background-color: rgb(248, 248, 249);
+  padding-left: 20px;
+  padding-right: 20px;
+  p {
+    font-size: 14px;
+  }
+  .keywords {
+    padding-top: 12px;
+    .icon {
+      top: 12px;
+      left: 8px;
+      font-size: 13px;
+      color: rgb(117, 117, 117);
+    }
+    #keyword {
+      border: 1px solid rgb(212, 215, 220);
+      padding-left: 32px;
+      font-size: 14px;
+      height: 36px;
+      width: 302px;
+      outline: none;
+    }
+  }
+}
+
+.users {
+  background-color: rgb(243, 245, 248);
+  height: 100%;
+  .col-3 {
+    background-color: white;
+    padding: 0;
+    margin: 20px 0px 20px 35px;
+    border: 1px solid rgb(212, 215, 220);
+    border-radius: 4px;
+    min-width: 360px;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($color: #fff, $amount: 20);
+    }
+    .user {
+      p {
+        font-size: 13px;
+        color: rgb(117, 117, 117);
+      }
+      .profile {
+        margin: 20px;
+        img {
+          width: 56px;
+          height: 56px;
+        }
+      }
+      .user-stats {
+        border-top: 1px solid rgb(243, 245, 248);
+        .border-right {
+          border-right: 1px solid rgb(243, 245, 248);
+        }
+        p {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+
+.user-details {
+  height: 100%;
+  background-color: rgb(248, 248, 249);
+  padding: 20px;
+
+  .back {
+    color: $purple;
+    p {
+      cursor: pointer;
+      &:hover {
+        color: darken($color: $purple, $amount: 20);
+      }
+    }
+    .icon {
+      font-size: 18px;
+    }
+  }
+  .user-profile {
+    padding: 20px;
+    border: 1px solid rgb(212, 215, 220);
+    background-color: white;
+    img {
+      width: 56px;
+      height: 56px;
+    }
+    .user-info {
+      margin-right: 40px;
+      .like fa-icon {
+        color: lighten($color: green, $amount: 10);
+        cursor: pointer;
+        &.like-active {
+          color: darken($color: green, $amount: 10);
+        }
+      }
+      .dislike fa-icon {
+        color: lighten($color: red, $amount: 10);
+        cursor: pointer;
+        &.dislike-active {
+          color: darken($color: red, $amount: 10);
+        }
+      }
+    }
+    .user-stats {
+      background-color: rgb(248, 248, 249);
+      margin-left: 20px;
+      width: 130px;
+      p {
+        color: rgb(117, 117, 117);
+        font-size: 12px;
+      }
+    }
+  }
+  .nav {
+    border: 1px solid rgb(212, 215, 220);
+    background-color: white;
+    border-top: none;
+    .nav-link {
+      padding: 15px 25px;
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+      &.active {
+        border-bottom: 3px solid #76618b;
+      }
+    }
+  }
+}

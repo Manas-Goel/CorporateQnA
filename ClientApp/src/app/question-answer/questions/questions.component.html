@@ -1,4 +1,4 @@
-<div class="questions">
+<div class="questions-list">
   <p class="text-info p-3" *ngIf="loading; else notLoading">Loading...</p>
   <ng-template #notLoading>
     <h5 class="text-danger p-3" *ngIf="questions.length == 0; else showContent">

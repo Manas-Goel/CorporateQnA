@@ -1,0 +1,10 @@
+@mixin user-info-common() {
+  img {
+    width: 28px;
+    height: 28px;
+  }
+  .post-time {
+    color: rgb(119, 119, 119);
+    font-size: 12px;
+  }
+}
